@@ -139,7 +139,7 @@ export default function Home() {
           <a href="#home" title="Home">
             <img
               src="/Logo.png"
-              alt="Logo"
+              alt="El Taco AztecaLogo"
               className="h-12 w-auto cursor-pointer"
             />
           </a>
@@ -243,8 +243,8 @@ export default function Home() {
 
       {/* MENU SECTION FIX: TACOS PNG BY ADDING SIDES, QUESADILLAS PNG BY ADDING SALAD, FRUIT COCKTAILS PNG BY ADDING LIME WEDGE*/}
       <section
-      id="menu"
-      className="bg-white">
+        id="menu"
+        className="bg-white">
 
         {/* AZTEC BANNER */}
         <div
@@ -286,6 +286,7 @@ export default function Home() {
                   <img
                     src={item.image}
                     alt={item.title}
+                    loading="lazy"
                     className={`
                       max-h-44 object-contain
                       transition duration-500 ease-out
@@ -376,8 +377,8 @@ export default function Home() {
 
       {/* CONTACT SECTION */}
       <section
-      id="contact"
-      className="bg-white">
+        id="contact"
+        className="bg-white">
         {/* CONTACT BANNER */}
         <div
           className="
@@ -586,7 +587,7 @@ export default function Home() {
             {/* IMAGE 1 */}
             <img
               src="/veracruz-5.webp"
-              alt="Veracruz"
+              alt="Veracruz mountainous view"
               className="
                 w-full max-w-sm
                 md:w-64 md:max-w-none
@@ -606,7 +607,7 @@ export default function Home() {
             {/* IMAGE 2 */}
             <img
               src="/veracruz-2.webp"
-              alt="Veracruz"
+              alt="Veracruz coastline view"
               className="
                 w-full max-w-sm
                 md:w-64 md:max-w-none
@@ -627,7 +628,7 @@ export default function Home() {
             {/* IMAGE 3 */}
             <img
               src="/veracruz-4.webp"
-              alt="Veracruz"
+              alt="Traditional Veracruz cultural view"
               className="
                 w-full max-w-sm
                 md:w-64 md:max-w-none
