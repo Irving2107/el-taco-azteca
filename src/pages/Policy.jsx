@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
+import { translations } from "../translations";
 
-export default function Policy() {
+export default function Policy({
+  language, setLanguage
+}) {
+  const t = translations[language];
+
   return (
     <div className="min-h-screen bg-stone-50">
+      {/* BANNER */}
       <div
         className="
         relative
@@ -11,10 +17,34 @@ export default function Policy() {
           backgroundImage: "url('/menu-banner.webp')"
         }}
       >
+
         <div className="absolute inset-0 bg-black/50"></div>
 
+        <div className="absolute top-6 right-6">
+
+          <button
+            onClick={() =>
+              setLanguage(
+                language === "en"
+                  ? "es"
+                  : "en"
+              )
+            }
+            className="
+              bg-white/80
+              px-4 py-2
+              rounded-full
+            "
+          >
+            {language === "en"
+              ? "ES"
+              : "EN"}
+          </button>
+
+        </div>
+
         <h1 className="relative text-5xl text-white font-cormorant font-bold">
-          Privacy Policy
+          {t.privacyPolicy}
         </h1>
       </div>
       <div className="
@@ -24,12 +54,8 @@ export default function Policy() {
         -mt-20 relative z-10
       ">
 
-        <h1 className="text-5xl font-cormorant font-bold mb-8">
-          Privacy Policy
-        </h1>
-
         <p className="text-neutral-500 mb-8">
-          Effective Date: June 2026
+          {t.effectiveDate}
         </p>
 
         <div className="space-y-6 text-neutral-700 leading-relaxed">
@@ -126,7 +152,7 @@ export default function Policy() {
             hover:text-green-500
           "
         >
-          ←Return Home
+          ←{t.returnHome}
         </Link>
       </div>
     </div>

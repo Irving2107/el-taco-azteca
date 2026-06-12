@@ -1,62 +1,66 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { translations } from "../translations";
 
-export default function Home() {
+export default function Home({
+  language, setLanguage
+}) {
   const [activeItem, setActiveItem] = useState(null);
   const [isSending, setIsSending] = useState(false);
   const navigate = useNavigate();
+  const t = translations[language];
 
   const menuItems = [
     {
       title: "Tacos",
       image: "/tacos.webp",
-      description: "Your choice of meat, onions, and cilantro. Served with a side of cucumber and radish slices, lime, and salsa."
+      description: t.tacoDescription
     },
     {
-      title: "Hardshell Tacos",
+      title: t.hardshellTacos,
       image: "/hardshell-tacos.webp",
-      description: "Your choice of meat, lettuce, cheese, tomatoes, and sour cream. Served with a side of cucumber slices, lime, and salsa."
+      description: t.hardshellTacoDescription
     },
     {
-      title: "Burritos",
+      title: t.burritos,
       image: "/burritos.webp",
-      description: "Your choice of meat, lettuce, mozarella cheese, tomatoes, rice, beans, and sour cream. Served with a side of salsa."
+      description: t.burritoDescription
     },
     {
-      title: "Empanadas",
+      title: t.empanadas,
       image: "/empanadas.webp",
-      description: "Crispy fried and chicken-filled, lettuce, tomatoes, Mexican cheese, and sour cream. Served with a side of salsa."
+      description: t.empanadaDescription
     },
     {
-      title: "Nachos",
+      title: t.nachos,
       image: "/nachos.webp",
-      description: "Your choice of meat, nacho cheese, lettuce, tomatoes, and sour cream."
+      description: t.nachosDescription
     },
     {
-      title: "Quesadillas",
+      title: t.quesadilla,
       image: "/quesadillas.webp",
-      description: "Your choice of meat and mozarella. Served with a side of salad."
+      description: t.quesadillaDescription
     },
     {
-      title: "Walking Tacos",
+      title: t.walkingTacos,
       image: "/walking-taco.webp",
-      description: "Your choice of meat, lettuce, cheese, tomatoes, and sour cream."
+      description: t.walkingTacoDescription
     },
     {
-      title: "Prepared Corn",
+      title: t.preparedCorn,
       image: "/corn.webp",
-      description: "Corn on the cob slathered in mayo, sprinkled with Mexican cheese and tajin powder."
+      description: t.preparedCornDescription
     },
     {
-      title: "Crazy Corn",
+      title: t.crazyCorn,
       image: "/crazy-corn.webp",
-      description: "Corn topped with mayo, sprinkled with Mexican cheese and tajin powder."
+      description: t.crazyCornDescription
     },
     {
-      title: "Fruit Cocktails",
+      title: t.fruitCocktail,
       image: "/fruit-cocktail.webp",
-      description: "Fresh fruit topped with chamoy sauce, tajin powder, and a lime wedge."
+      description: t.fruitCocktailDescription
     }
   ]
 
@@ -136,7 +140,7 @@ export default function Home() {
         ></div>
         <div className="relative flex items-center justify-between w-full">
           {/* LEFT SIDE - LOGO */}
-          <a href="#home" title="Home">
+          <a href="#home" title={t.home}>
             <img
               src="/Logo.png"
               alt="El Taco AztecaLogo"
@@ -150,27 +154,46 @@ export default function Home() {
             <a
               href="#menu"
               className="hover:text-green-500 transition"
-              title="View Our Menu"
+              title={t.viewOurMenu}
             >
-              Menu
+              {t.menu}
             </a>
 
             <a
               href="#contact"
               className="hover:text-green-500 transition"
-              title="Contact Us"
+              title={t.contactUs}
             >
-              Contact
+              {t.contact}
             </a>
 
             <a
               href="#about"
               className="hover:text-green-500 transition"
-              title="Learn More"
+              title={t.learnMore}
             >
-              About Us
+              {t.about}
             </a>
 
+            <button
+              onClick={() =>
+                setLanguage(
+                  language === "en"
+                    ? "es"
+                    : "en"
+                )
+              }
+              className="
+                border border-white/30
+                px-3 py-1 rounded-full
+                hover:bg-white/20 hover:text-black
+                transition
+              "
+            >
+              {language === "en"
+                ? "ES"
+                : "EN"}
+            </button>
           </div>
         </div>
       </nav>
@@ -230,12 +253,12 @@ export default function Home() {
 
           {/* TITLE */}
           <h1 className="text-6xl font-bold animate-fadeIn">
-            El Taco Azteca
+            {t.heroTitle}
           </h1>
 
           {/* SUBTITLE */}
           <p className="mt-4 text-xl opacity-0 animate-fadeInDelay">
-            Authentic Mexican Street Food
+            {t.heroSubtitle}
           </p>
 
         </div>
@@ -259,12 +282,22 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/50"></div>
           {/* Title */}
           <h2 className="relative text-6xl font-bold font-cormorant text-white">
-            Our Menu
+            {t.ourMenu}
           </h2>
         </div>
 
         {/* MENU GRID */}
         <div className="py-20 px-8 bg-white">
+
+          {/* Mobile Instruction */}
+          <div className="md:hidden text-center mb-8">
+            <div className="inline-block bg-stone-100 px-4 py-2 rounded-full shadow-sm">
+              <p className="text-sm text-neutral-700">
+                👆{t.tapOnMenuItem}
+              </p>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-y-16 gap-x-10 max-w-7xl mx-auto">
             {menuItems.map((item, index) => (
               <div
@@ -303,7 +336,7 @@ export default function Home() {
                   />
 
                   {/* NEW STICKER */}
-                  {item.title === "Fruit Cocktails" && (
+                  {item.title === t.fruitCocktail && (
                     <div
                       className={`
                       absolute top-2 right-1
@@ -320,7 +353,7 @@ export default function Home() {
                       md:group-hover:opacity-0
                     `}
                     >
-                      NEW!
+                      {t.new}
                     </div>
                   )}
                 </div>
@@ -396,12 +429,11 @@ export default function Home() {
           {/*content */}
           <div className="relative text-white">
             <h2 className="text-5xl font-bold mb-4 font-cormorant">
-              Contact Us
+              {t.contactTitle}
             </h2>
 
             <p className="text-gray-400 text-lg max-w-2xl">
-              Have questions, catering inquiries, or feedback?
-              We'd love to hear from you.
+              {t.contactSubtitle}
             </p>
           </div>
         </div>
@@ -433,7 +465,7 @@ export default function Home() {
                 {/* NAME */}
                 <div>
                   <label className="block mb-2 font-medium">
-                    Full Name
+                    {t.fullName}
                   </label>
 
                   <input
@@ -456,7 +488,7 @@ export default function Home() {
                 {/* EMAIL */}
                 <div>
                   <label className="block mb-2 font-medium">
-                    Email
+                    {t.email}
                   </label>
 
                   <input
@@ -481,13 +513,13 @@ export default function Home() {
               {/* ROW 2 */}
               <div>
                 <label className="block mb-2 font-medium">
-                  Message
+                  {t.message}
                 </label>
 
                 <textarea
                   rows="6"
                   required
-                  placeholder="Write your message here..."
+                  placeholder={t.writeYourMessage}
                   className="
                   w-full
                   rounded-3xl
@@ -523,7 +555,7 @@ export default function Home() {
                   `}
 
                 >
-                  {isSending ? "Sending..." : "SUBMIT"}
+                  {isSending ? t.submitProcessing : t.submit}
                 </button>
 
               </div>
@@ -555,21 +587,15 @@ export default function Home() {
           <div>
 
             <h2 className="text-5xl font-bold font-cormorant mb-8">
-              Our Story
+              {t.aboutTitle}
             </h2>
 
             <p className="text-lg leading-relaxed mb-6 text-neutral-700">
-              El Taco Azteca was inspired by the bold flavors
-              and street food traditions of Veracruz, Mexico.
-              Our mission is to bring authentic Mexican street food
-              to our community while honoring the culture and recipes
-              that shaped our roots.
+              {t.aboutParagraph1}
             </p>
 
             <p className="text-lg leading-relaxed text-neutral-700">
-              Every dish is prepared with passion, fresh ingredients,
-              and the goal of creating an experience that feels
-              authentic, welcoming, and unforgettable.
+              {t.aboutParagraph2}
             </p>
 
           </div>
@@ -651,11 +677,11 @@ export default function Home() {
         <div className="max-w-5xl mx-auto mt-28 text-center">
 
           <h3 className="text-4xl font-bold font-cormorant mb-6">
-            Where To Find Us
+            {t.whereToFindUs}
           </h3>
 
           <p className="text-lg text-neutral-700 mb-10">
-            Currently located in Edinburgh, Indiana. Check us out at local events and festivals, or book us for your next party or catering event!
+            {t.whereToFindUsSubtitle}
           </p>
 
           {/* GOOGLE MAP */}
@@ -695,8 +721,7 @@ export default function Home() {
             </h3>
 
             <p className="text-white/70 leading-relaxed">
-              Authentic Veracruz-style Mexican street food
-              made with passion, culture, and fresh ingredients.
+              {t.footerMessage}
             </p>
 
           </div>
@@ -705,25 +730,25 @@ export default function Home() {
           <div>
 
             <h4 className="text-xl font-semibold mb-4">
-              Quick Links
+              {t.quickLinks}
             </h4>
 
             <div className="flex flex-col gap-3 text-white/70">
 
-              <a href="#home" title="Home" className="hover:text-white transition">
-                Home
+              <a href="#home" title={t.home} className="hover:text-white transition">
+                {t.returnHome}
               </a>
 
-              <a href="#menu" title="View Our Menu" className="hover:text-white transition">
-                Menu
+              <a href="#menu" title={t.viewOurMenu} className="hover:text-white transition">
+                {t.menu}
               </a>
 
-              <a href="#contact" title="Contact Us" className="hover:text-white transition">
-                Contact
+              <a href="#contact" title={t.contactUs} className="hover:text-white transition">
+                {t.contact}
               </a>
 
-              <a href="#about" title="Learn More" className="hover:text-white transition">
-                About Us
+              <a href="#about" title={t.learnMore} className="hover:text-white transition">
+                {t.about}
               </a>
 
             </div>
@@ -734,7 +759,7 @@ export default function Home() {
           <div>
 
             <h4 className="text-xl font-semibold mb-4">
-              Find Us
+              {t.findUs}
             </h4>
 
             <div className="text-white/70 space-y-3">
@@ -772,7 +797,7 @@ export default function Home() {
         >
 
           <p>
-            © {new Date().getFullYear()} El Taco Azteca. All rights reserved.
+            © {new Date().getFullYear()} El Taco Azteca. {t.footerCopyright}
           </p>
 
           <div className="flex gap-6">
@@ -781,14 +806,14 @@ export default function Home() {
               to="/policy"
               className="hover:text-white transition"
             >
-              Privacy Policy
+              {t.privacyPolicy}
             </Link>
 
             <Link
               to="/terms"
               className="hover:text-white transition"
             >
-              Terms & Conditions
+              {t.termsConditions}
             </Link>
 
           </div>

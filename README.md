@@ -87,6 +87,8 @@ The following enhancements are planned for future development:
 * Search engine optimization (SEO) enhancements
 * Performance optimizations and image lazy-loading
 * Event calendar showcasing upcoming festivals and appearances
+* Expand English/Spanish translations to all pages
+
 
 ## Live Website
 

@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { translations } from "../translations";
 
-export default function Terms() {
+export default function Terms({
+  language, setLanguage
+}) {
+  const t = translations[language];
+
   return (
     <div className="min-h-screen bg-stone-50">
 
@@ -17,9 +22,30 @@ export default function Terms() {
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute top-6 right-6">
 
+          <button
+            onClick={() =>
+              setLanguage(
+                language === "en"
+                  ? "es"
+                  : "en"
+              )
+            }
+            className="
+              bg-white/80
+              px-4 py-2
+              rounded-full
+            "
+          >
+            {language === "en"
+              ? "ES"
+              : "EN"}
+          </button>
+
+        </div>
         <h1 className="relative text-6xl font-bold font-cormorant text-white">
-          Terms & Conditions
+          {t.termsConditions}
         </h1>
       </div>
 
@@ -34,12 +60,9 @@ export default function Terms() {
         ">
 
           <div className="space-y-6 text-neutral-700 leading-relaxed">
-            <h1 className="text-5xl font-cormorant font-bold mb-2 text-black">
-              Terms & Conditions
-            </h1>
 
             <p className="text-neutral-500 mb-8">
-              Effective Date: June 2026
+              {t.effectiveDate}
             </p>
 
             <p>
@@ -155,7 +178,7 @@ export default function Terms() {
                 shadow-lg
               "
             >
-              ←Return Home
+              ←{t.returnHome}
             </Link>
 
           </div>
