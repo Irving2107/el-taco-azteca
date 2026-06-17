@@ -6,9 +6,8 @@ The website was designed to provide customers with an engaging online experience
 
 ## Features
 
-* Fully responsive desktop and mobile design
+* Fully responsive desktop and mobile layouts with optimized slideshow experiences
 * Hero section image slideshow
-* Dedicated mobile and desktop slideshow layouts
 * Interactive menu section with expandable item descriptions
 * Contact form powered by Formspree
 * Custom Thank You page after successful form submission
@@ -16,45 +15,59 @@ The website was designed to provide customers with an engaging online experience
 * Terms & Conditions page
 * Embedded Google Maps location
 * Facebook integration
-* Smooth scrolling navigation
 * Optimized WebP image assets
 * Modern UI built with Tailwind CSS
+* Responsive mobile navigation with hamburger menu
+* Smooth dropdown transitions for improved mobile UX
 
-## Built With
+## Accessibility & UX
 
-* React
-* Vite
-* Tailwind CSS
-* React Router
-* Formspree
+* Semantic HTML structure
+* Alt text for images
+* Smooth scrolling navigation
+* Automatic scroll-to-top between routes
+* Mobile-friendly interactions
+* Clear mobile menu discovery prompts
+* Responsive navigation designed for touch devices
+
+## Technical Overview
+
+* Built as a single-page React application using Vite
+* Implemented client-side routing with React Router
+* Managed interactive UI states using React Hooks
+* Created reusable responsive components with Tailwind CSS
+* Integrated Formspree API for customer contact submissions
+* Implemented responsive image optimization using WebP assets
+* Designed mobile-first layouts with adaptive navigation behavior
 
 ## Installation
 
 Clone the repository:
-bash
+```bash
 git clone https://github.com/YOUR_USERNAME/el-taco-azteca.git
 
 Navigate to the project directory:
-bash
+```bash
 cd el-taco-azteca
 
 Install dependencies:
-bash
+```bash
 npm install
 
 Run the development server:
-bash
+```bash
 npm run dev
 
 ## Production Build
 
 Create a production build:
-bash
+```bash
 npm run build
 
 Preview the production build locally:
-bash
+```bash
 npm run preview
+```
 
 ## Project Structure
 
@@ -70,27 +83,55 @@ src/
 └── index.css
 
 public/
-├── images
-├── logo
-└── website assets
+├── images/
+├── logo/
+└── website assets/
+
+## Lessons learned
+
+* Implementing responsive navigation patterns
+* Managing UI state with React hooks
+* Creating animated components with Tailwind CSS transitions
+* Improving user experience through mobile-focused design decisions
+
+## Challenges & Solutions
+
+### Responsive Hero Slideshow
+Designed separate desktop and mobile slideshow experiences to ensure images remained visually appealing across different screen sizes.
+
+### Mobile Menu Experience
+Implemented a responsive hamburger navigation system with animated transitions using React state management and Tailwind CSS.
+
+### Client Communication Workflow
+Integrated Formspree to allow customers to submit inquiries without requiring a custom backend.
 
 ## Future Improvements
 
 The following enhancements are planned for future development:
 
-* Online ordering system
+### User Experience
 * Interactive slideshow controls allowing users to manually switch between hero images
-* Additional menu categories and seasonal specials
-* Expanded social media integration
-* Enhanced contact form feedback and confirmation messaging
+* Animated page transitions between routes
+* Active section highlighting while scrolling
 * Improved accessibility and keyboard navigation support
-* Search engine optimization (SEO) enhancements
-* Performance optimizations and image lazy-loading
+
+### Business Features
+* Online ordering system
 * Event calendar showcasing upcoming festivals and appearances
-* Expand English/Spanish translations to all pages
+* Expanded social media integration
+* Additional menu categories and seasonal specials
 
+### Technical Improvements
+* Search engine optimization enhancements
+* Performance optimizations and image lazy-loading
+* Expanded English/Spanish translations across all pages
+* Enhanced contact form feedback and confirmation messaging
 
-## Live Website
+## Deployment
+
+The application is deployed using Vercel with a custom domain configuration.
+
+Live Site:
 
 https://el-taco-azteca.com
 
@@ -101,10 +142,13 @@ For catering requests, private events, bookings, or general inquiries, please us
 ## Developed By
 
 Designed and developed by Irving Luis-Orozco.
+
+This project demonstrates full-stack web development concepts including frontend architecture, responsive UI design, API integration, deployment, and user experience optimization.
 LinkedIn: https://www.linkedin.com/in/irving-luis-orozco-836236321
 
 This project was created as a custom website for El Taco Azteca to establish a professional online presence and improve customer engagement.
 
 ## License
 
-This project was developed specifically for El Taco Azteca and is not intended for redistribution, reuse, or commercial reproduction without permission.
+This project is proprietary software created for El Taco Azteca. 
+The source code may not be copied, redistributed, or used commercially without permission.

@@ -8,6 +8,7 @@ export default function Home({
 }) {
   const [activeItem, setActiveItem] = useState(null);
   const [isSending, setIsSending] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const t = translations[language];
 
@@ -138,18 +139,29 @@ export default function Home({
             backgroundImage: "url('/menu-banner.webp')"
           }}
         ></div>
-        <div className="relative flex items-center justify-between w-full">
+        <div className="relative flex items-center justify-between w-full gap-4">
           {/* LEFT SIDE - LOGO */}
           <a href="#home" title={t.home}>
             <img
               src="/Logo.png"
               alt="El Taco AztecaLogo"
-              className="h-12 w-auto cursor-pointer"
+              className="
+                h-10
+                sm:h-12
+                max-w-[120px]
+                object-contain
+                cursor-pointer"
             />
           </a>
 
           {/* RIGHT SIDE - NAV LINKS */}
-          <div className="flex gap-8 text-lg font-medium text-white">
+          <div className="
+            hidden md:flex
+            gap-8 text-lg
+            font-medium
+            text-white 
+            "
+          >
 
             <a
               href="#menu"
@@ -195,6 +207,129 @@ export default function Home({
                 : "EN"}
             </button>
           </div>
+          {/* MOBILE HAMBURGER BUTTON */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="
+                md:hidden flex flex-col
+                justify-center gap-1.5
+                w-8 h-8 z-50
+              "
+          >
+            <span
+              className={`
+                block h-0.5
+                w-8 bg-white
+                transition-transform
+                duration-300
+
+                ${menuOpen
+                  ? "rotate-45 translate-y-2"
+                  : ""
+                }
+              `}
+            />
+
+            <span
+              className={`
+                block h-0.5
+                w-8 bg-white
+                transition-opacity
+                duration-300
+
+                ${menuOpen
+                  ? "opacity-0"
+                  : ""
+                }
+              `}
+            />
+
+            <span
+              className={`
+                block h-0.5
+                w-8 bg-white
+                transition-transform
+                duration-300
+
+                ${menuOpen
+                  ? "-rotate-45 -translate-y-2"
+                  : ""
+                }
+              `}
+            />
+          </button>
+        </div>
+        {/* MOBILE MENU */}
+        <div
+          className={`
+            md:hidden absolute top-full
+            left-0 w-full bg-black/90
+            backdrop-blur-md text-white
+            flex flex-col items-center
+            gap-6 py-8 overflow-hidden
+            transition-all duration-500
+            ease-in-out
+
+            ${menuOpen
+              ? "max-h-96 opacity-100 translate-y-0"
+              : "max-h-0 opacity-0 -translate-y-4 pointer-events-none"
+            }
+          `}
+        >
+
+          <a
+            href="#menu"
+            onClick={() => setMenuOpen(false)}
+            className={`
+              transition-all duration-500 delay-200 text-lg
+              ${menuOpen ? "opacity-100" : "opacity-0"}
+            `}
+          >
+            {t.menu}
+          </a>
+
+          <a
+            href="#contact"
+            onClick={() => setMenuOpen(false)}
+            className={`
+              transition-all duration-500 delay-300 text-lg
+              ${menuOpen ? "opacity-100" : "opacity-0"}
+            `}
+          >
+            {t.contact}
+          </a>
+
+          <a
+            href="#about"
+            onClick={() => setMenuOpen(false)}
+            className={`
+              transition-all duration-500 delay-400 text-lg
+              ${menuOpen ? "opacity-100" : "opacity-0"}
+            `}
+          >
+            {t.about}
+          </a>
+
+          <button
+            onClick={() =>
+              setLanguage(
+                language === "en"
+                  ? "es"
+                  : "en"
+              )
+            }
+            className={`
+              border border-white/30
+              px-4 py-2 rounded-full
+              hover:bg-white/20 hover:text-black
+              transition-all duration-500 delay-550
+              ${menuOpen ? "opacity-100" : "opacity-0"}
+            `}
+          >
+            {language === "en"
+              ? "ES"
+              : "EN"}
+          </button>
         </div>
       </nav>
 
